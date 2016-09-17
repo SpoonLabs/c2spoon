@@ -2,7 +2,7 @@
 <servers>
     <server>
         <id>github</id>
-        <password>15681bf75b4f34fa19fba569d59ed6711ea773b2</password>
+        <password>${env.GITHUB_PASSWORD}</password>
     </server>
 </servers>
 </settings>
