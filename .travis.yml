@@ -1,0 +1,14 @@
+language: java
+sudo: false
+script: mvn test jacoco:report coveralls:report
+jdk:
+- oraclejdk7
+cache:
+  directories:
+  - "$HOME/.m2"
+env:
+  global:
+    secure: dtmSueVxkx+BQng9XCfSvj0Em/I7pH5znHYLNy8iqknL5qUWe4my8hSP+D0ENsPw4VabyepLxQhxbu76RCXlUxy0ZnUvaUR1bwQ4zqX0+7BWBdyA0oU5QRWeHjZg3YyUR+ey+pgnIoFEcR14Z7QGvkpd2t8sAbaVOAxS0pRk6RIMac6xl//Axjnp7rnWiLqDeKDeRXYXeW47HEDZdZu+bsMWS5ahUhPrbXdWz9lUMPTHrakaCl+RGnr4Bm/FyrtmKB66W0kLS8MEMCD3Qp9nb59tUuC7LDnuTqyTZ6VsSYvdGlgMv+KeDkawJ8eDd8t/3FbVW0fbuXyB80muQ4KpO2e+OY1LbqVqzu1OgNXy0TgoZBj+Qe0tcW3npPrBZV6s+j7CDw6fXoeha3x1xL0CejYD7GSDB61UJ7hwMOSGqWoyfQZl0mVgVu10HIi4IWBTSsYRsbeWd71X+6bGKqZS5ViXUz1P40ZaDqCoOckA3WOJmXvvmabgyjd4EqhPXjLqihWhSCTjUN8X9EAVMMv4Fm0j6cabTpJhterkxp0nMZynNOW/0b1u1lNSTrtR2UdxdFy+9dF2a283Wf1NX85CGTU254n2n0b6zeAHtYA+mlwVt2PUmsgYY1Hr5NaVZCHVwo6gXgrO5SELyjtQGUVhaF2Jm6d8FvJEwAjiTk+HgPw=
+after_success:
+- '[[ $TRAVIS_BRANCH == "master" ]] && { mvn deploy --settings .travis-settings.xml
+  -DskipTests=true -B; };'
